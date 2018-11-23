@@ -66,6 +66,49 @@ public class Notes
         {
             //System.out.println(i + ": " + odds[i]);  // the exception tells you useful info!
         }
+        
+        /*
+         * Array references
+         *   variables of type array, contain a reference to the array.
+         *   assigning one array to another, copies the reference,
+         *   not the array's elements.
+         */
+        int[] moreOdds = odds;
+        
+        /*
+         * This code changes the value of the element in the array, which is
+         *    referenced by both variables.
+         */
+        odds[2] = 6;
+        System.out.println(moreOdds[2]);
+        
+        
+        /*
+         * Enhanced for loop
+         *      similar to the "for...in... " structure in Python
+         *      iterates over the values in an array, and accesses each element.
+         */
+        for(int number : odds)
+        {
+            System.out.println( number);
+        }
+        
+        /*
+         * Limitations of enhanced for loops
+         *      the local variable (e.g. number) contains a copy of the value in the element.
+         *      cannot modify the values of the element in the array
+         *      cannot easily determine the index of an element.
+         */
+        for(int number : odds)
+        {
+            number += 1;
+            System.out.println( number);
+        }
+        
+        for(int number : odds)
+        {
+            System.out.println( number);
+        }
     }
     
     
