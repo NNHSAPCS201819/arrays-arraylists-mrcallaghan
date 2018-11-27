@@ -1,7 +1,6 @@
 import java.util.Arrays;
-import java.util.Random;
 
-public class CommonArrayAlgorithms
+public class CommonArrayAlgorithms2
 {
     /*
      * Create array of the specified size filled with
@@ -14,10 +13,10 @@ public class CommonArrayAlgorithms
         {
             randomArray[ i ] = (int)( Math.random() * maxValue );
         }
-        
+
         return randomArray;
     }
-    
+
     /*
      * Prints the specified array to System.out
      */
@@ -25,7 +24,7 @@ public class CommonArrayAlgorithms
     {
         System.out.println( Arrays.toString( array ));
     }
-    
+
     /*
      * Array Algorithm #1: Sum and Average
      *  creates an array filled with random numbers
@@ -48,7 +47,7 @@ public class CommonArrayAlgorithms
         }
 
         average = sum / count;
-        
+
         printArray( array );
         System.out.println( "sum: " + sum + " average: " + average );
     }
@@ -61,16 +60,12 @@ public class CommonArrayAlgorithms
      */
     public static void printElementSeparators()
     {
-        int[] array = createRandomArray(10,50);
-        for(int i = 0; i<array.length; i++)
+        int[] array = createRandomArray(5, 10);
+        for(int i = 0; i < (array.length - 1); i++)
         {
-            System.out.print(array[i]);
-            if(i<(array.length-1))
-            {
-                System.out.print("|");
-            }
+            System.out.print(array[i] + "|");
         }
-
+        System.out.print(array[array.length - 1]);
     }
 
     /*
@@ -81,53 +76,27 @@ public class CommonArrayAlgorithms
      */
     public static void linearSearch( int valueToFind )
     {
-        int [] randm = createRandomArray(10,3);
+        int[] array = createRandomArray(20, 10);
 
-        int index = 0;
-        for(int i = 0; i < randm.length; i++)
-        {
-            if(randm[i] == valueToFind)
-            {
+        int index = -1;
+
+        for (int i = 0; i < array.length; i ++){
+            if (array[i] == valueToFind){
                 index = i;
-                System.out.println("Index: " + i);
+                break;
             }
         }
 
-        for(int i = 0; i < randm.length; i++)
-        {
-            System.out.println(randm[i]);
+        System.out.println(index);
+
+        for (int i = 0; i < array.length; i ++){
+            System.out.println(i + ": " + array[i]);
         }
 
     }
-    
+
     /*
-     * Array Algorithm #3: Linear Search
-     *  creates an array filled with random numbers
-     *  find the index of the first element with the specified value
-     *  prints the array and the index
-     */
-    public static void linearSearch2( int valueToFind )
-    {
-        int [] randm = createRandomArray(10,3);
-
-        
-        for(int i = 0; i < randm.length; i++)
-        {
-            if(randm[i] == valueToFind)
-            {
-                System.out.println("Index: " + i);
-            }
-        }
-
-        for(int i = 0; i < randm.length; i++)
-        {
-            System.out.println(randm[i]);
-        }
-    }
-
-    
-    /*
-     * Array Algorithm #4: Swap Elements  [FIX]
+     * Array Algorithm #4: Swap Elements
      *  creates an array filled with random numbers
      *  prints the array
      *  swaps the elements at the two specified indexes
@@ -135,23 +104,20 @@ public class CommonArrayAlgorithms
      */
     public static void swapElements( int index1, int index2 )
     {
-        System.out.println("New Array: ");
-        int[] array = createRandomArray(10,20);
-        for (int i = 0; i< array.length; i++)
-        {
-            System.out.println(i+": "+array[i]);
-        }
-        int copy = array[index1];
-        array[index1] = array[index2];
-        array[index2] = copy;
-        System.out.println("Changed Array: ");
-        for (int i = 0; i< array.length; i++)
-        {
-            System.out.println(i+": "+array[i]);
-        }
-        
-    }
+        System.out.println("First List:");
+        int[] elements = createRandomArray(10, 20);
 
+        for (int num : elements) {
+            System.out.println(num);
+        }
+        int copy = elements[index1];
+        elements[index1] = elements[index2];
+        elements[index2] = copy; 
+        System.out.println("\nNew list:");
+        for (int num : elements) {
+            System.out.println(num);
+        }
+    }
 
     /*
      * Array Algorithm #5.1: findMax
@@ -160,19 +126,19 @@ public class CommonArrayAlgorithms
      */
     public static void findMax() 
     {
-        int[] array = CommonArrayAlgorithms.createRandomArray(10, 20);
-        int max = 0;
-        System.out.println("The numbers are:");
-        for (int number : array)
+
+        int[] array = createRandomArray( 10, 50 );
+        int max = array[0];
+
+        for (int val : array)
         {
-            System.out.print(number + "\t");
-            if (number >= max)
+            if (max < val)
             {
-                max = number;
+                max = val;
             }
         }
-        System.out.println("\nThe greatest number in the array is: " + max);
-
+        printArray(array);
+        System.out.println("Max: "+max);
     }
 
     /*
@@ -182,25 +148,20 @@ public class CommonArrayAlgorithms
      */
     public static void findMin()
     {
-        //generate random array
-        int[] array = createRandomArray( 10, 50 );
-        
-        //initialize initial guess at minimum value
-        int min = array[0];
-        
-        for(int i = 1; i < array.length; i++)
+
+        int[] fivePointTwo = createRandomArray( 10, 50 );
+        int min=fivePointTwo[0];
+
+        for (int number: fivePointTwo)
         {
-            //if current element of array is less than current value for min, replace it
-            if (array[i] < min)
+            if(number<min)
             {
-                min = array[i];
+                min=number;
+
             }
         }
-
-
-        printArray( array );
-        System.out.println( "Least number: " + min);
-
+        printArray(fivePointTwo);
+        System.out.println("\nMin= "+(min));
     }
 
     /*
@@ -213,24 +174,15 @@ public class CommonArrayAlgorithms
      */
     public static int[] copyArray()
     {
-    int[] a = randArray(10);
-    int[] b = new int[a.length];
-    for (int i = 0; i < a.length; i++) {
-        b[i] = a[a.length-i-1];
+        int[] random = CommonArrayAlgorithms.createRandomArray(10, 50);
+        int[] copy = new int[random.length];
+        for (int i = 0; i < copy.length; i++){
+            copy[i] = random[copy.length-1-i];
+            System.out.print(random[i] + " ");
+        }
+        System.out.println();
+        printArray(copy);
+        return copy;
     }
-    printArray(a);
-    printArray(b);
-    return b;
-
-    }
-    
-    public static int[] randArray(int l) {
-    int[] a = new int[l];
-    for (int i = 0; i < a.length; i++) {
-        a[i] = (int)(Math.random()*100+1);
-    }
-    return a;
-}
-
 
 }
