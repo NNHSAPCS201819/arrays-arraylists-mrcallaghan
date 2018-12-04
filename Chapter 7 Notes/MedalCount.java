@@ -56,7 +56,8 @@ public class MedalCount
     /**
      * Sum the medals for the specified country index
      * 
-     * @param countryIndex the index of teh country in the table whose
+     * @param countryIndex the index of the country in the table whose medals to sum
+     * @return the sum of teh medals for the specified country index
      */
     public int sumMedalsForCountry(int countryIndex)
     {
@@ -69,8 +70,22 @@ public class MedalCount
         return sum;
     }
 
-    
-    
+    /**
+     * Sum the medals of a given type specified by the medal index
+     * 
+     * @param medalIndex the index of a given type of medal to sum
+     * @return the sum of the medals of a given type specified by the medal index
+     */
+    public int sumMedalsForType(int medalIndex)
+    {
+        int sum = 0;
+        
+        for( int row = 0; row < this.counts.length; row++ )
+        {
+            sum += this.counts[row][medalIndex];
+        }
+        return sum;
+    }
     
     
 }

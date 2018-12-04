@@ -12,7 +12,7 @@ public class CharMatrix
   }
 
   // Constructor: creates a grid with dimensions rows , cols ,
-  // and fills it with the fill  character
+  // and fills it with the fill character
   public CharMatrix(int rows, int cols, char fill)
   {
     ...
